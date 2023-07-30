@@ -46,6 +46,19 @@ services:
     networks:
       - app-network
 
+  phpmyadmin:
+    container_name: webshop-phpmyadmin
+    image: phpmyadmin
+    ports:
+      - 10002:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=webshop-db
+    depends_on:
+      - db
+    networks:
+      - app-network
+
 #Docker Networks
 networks:
   app-network:
